@@ -6,13 +6,15 @@ uses
   USerieFibonacci in 'USerieFibonacci.pas' {FrmSerieFibonacci},
   UCalculoSalarioSemanal in 'UCalculoSalarioSemanal.pas' {FrmCalculoSalarioSemanal},
   UDataModul in 'UDataModul.pas' {DataModule1: TDataModule},
-  UCrudClientes in 'UCrudClientes.pas' {FrmCrudClientes};
+  UCrudClientes in 'UCrudClientes.pas' {FrmCrudClientes},
+  UCrudProductos in 'UCrudProductos.pas' {FrmCrudProductos};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TFRM_PRINCIPAL, FRM_PRINCIPAL);
+//  Application.CreateForm(TFrmCrudProductos, FrmCrudProductos);
   //Application.CreateForm(TFrmCrudClientes, FrmCrudClientes);
   //Application.CreateForm(TDataModule1, DataModule1);
   //Application.CreateForm(TFrmCalculoSalarioSemanal, FrmCalculoSalarioSemanal);

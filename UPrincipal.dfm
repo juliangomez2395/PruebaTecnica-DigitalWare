@@ -2755,6 +2755,10 @@ object FRM_PRINCIPAL: TFRM_PRINCIPAL
         Caption = 'CRUD Clientes'
         OnClick = CRUDClientesManejodebasededatos1Click
       end
+      object CRUDProductos1: TMenuItem
+        Caption = 'CRUD Productos'
+        OnClick = CRUDProductos1Click
+      end
     end
   end
 end

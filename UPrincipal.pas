@@ -14,9 +14,11 @@ type
     CalculoSalarioSemanal1: TMenuItem;
     CRUDClientesManejodebasededatos1: TMenuItem;
     Imagen02: TImage;
+    CRUDProductos1: TMenuItem;
     procedure SerieFibonacci1Click(Sender: TObject);
     procedure CalculoSalarioSemanal1Click(Sender: TObject);
     procedure CRUDClientesManejodebasededatos1Click(Sender: TObject);
+    procedure CRUDProductos1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,7 +30,8 @@ var
 
 implementation
 
-uses USerieFibonacci, UCalculoSalarioSemanal, UCrudClientes;
+uses USerieFibonacci, UCalculoSalarioSemanal, UCrudClientes,
+  UCrudProductos;
 
 {$R *.dfm}
 
@@ -64,6 +67,19 @@ begin
   except
     FrmCrudClientes.free;
   end;
+end;
+
+procedure TFRM_PRINCIPAL.CRUDProductos1Click(Sender: TObject);
+begin
+
+  FrmCrudProductos := TFrmCrudProductos.create(application);
+
+  try
+    FrmCrudProductos.Show;
+  except
+    FrmCrudProductos.free;
+  end;
+
 end;
 
 end.

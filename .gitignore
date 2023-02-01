@@ -1,0 +1,20 @@
+#omitir los siguientes tipos de archivos
+
+*.exe
+*.dll
+*.bpl
+*.bpi
+*.dcp
+*.drc
+*.map
+*.dres
+*.rsm
+*.tds
+*.dcu
+*.lib
+*.~pas
+*.~dpr
+*.~dfm
+*.~ddp
+*.~dcu
+*.~*

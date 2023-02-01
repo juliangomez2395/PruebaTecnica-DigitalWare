@@ -5,6 +5,7 @@ object DataModule1: TDataModule1
   Height = 456
   Width = 694
   object ConexionLocal: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=Colombia01+;Persist Security Info=T' +
       'rue;User ID=sa;Initial Catalog=PRUEBA;Data Source=192.168.20.117' +
