@@ -1,6 +1,6 @@
 object FrmCrudClientes: TFrmCrudClientes
-  Left = 272
-  Top = 125
+  Left = 374
+  Top = 333
   Width = 937
   Height = 576
   AutoSize = True
@@ -952,6 +952,8 @@ object FrmCrudClientes: TFrmCrudClientes
       Width = 905
       Height = 281
       DataSource = DtsClienteCRUD
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+      ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText

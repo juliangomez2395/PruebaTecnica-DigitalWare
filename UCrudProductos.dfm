@@ -1,17 +1,22 @@
 object FrmCrudProductos: TFrmCrudProductos
-  Left = 372
-  Top = 253
+  Left = 424
+  Top = 272
   Width = 937
   Height = 576
   AutoSize = True
-  Color = clBtnFace
+  BorderIcons = [biSystemMenu]
+  Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  FormStyle = fsMDIChild
   OldCreateOrder = False
+  Position = poMainFormCenter
+  Visible = True
   OnActivate = FormActivate
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -445,6 +450,7 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 1
+      OnClick = BitBtn2Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000C3C3C3C3C3C3
@@ -559,6 +565,7 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
+      OnClick = BitBtn3Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -673,6 +680,7 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 3
+      OnClick = BitBtn4Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000C3C3C3C3C3C3
@@ -801,6 +809,7 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = []
       ParentFont = False
       TabOrder = 5
+      OnExit = Edit2Exit
     end
     object Edit3: TEdit
       Left = 612
@@ -815,6 +824,7 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = []
       ParentFont = False
       TabOrder = 6
+      OnKeyUp = Edit3KeyUp
     end
     object BitBtn5: TBitBtn
       Left = 585
@@ -829,6 +839,7 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 7
+      OnClick = BitBtn5Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -942,12 +953,15 @@ object FrmCrudProductos: TFrmCrudProductos
       Width = 905
       Height = 281
       DataSource = DataSource1
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+      ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      OnDblClick = DBGrid1DblClick
       Columns = <
         item
           Expanded = False
@@ -975,7 +989,6 @@ object FrmCrudProductos: TFrmCrudProductos
     Top = 328
   end
   object QryProductosCreados: TADOQuery
-    Active = True
     Connection = DataModule1.ConexionLocal
     CursorType = ctStatic
     Parameters = <>
@@ -996,7 +1009,6 @@ object FrmCrudProductos: TFrmCrudProductos
     end
   end
   object QryCrudProductos: TADOQuery
-    Active = True
     Connection = DataModule1.ConexionLocal
     CursorType = ctStatic
     Parameters = <>
@@ -1004,20 +1016,18 @@ object FrmCrudProductos: TFrmCrudProductos
       'select * from PRODUCTOS')
     Left = 112
     Top = 376
-    object IntegerField1: TIntegerField
-      Alignment = taLeftJustify
+    object QryCrudProductosPRODUCTO: TIntegerField
       FieldName = 'PRODUCTO'
     end
-    object StringField1: TStringField
+    object QryCrudProductosNOMBRE_PRODUCTO: TStringField
       FieldName = 'NOMBRE_PRODUCTO'
       Size = 50
     end
-    object FloatField1: TFloatField
+    object QryCrudProductosVALOR: TFloatField
       FieldName = 'VALOR'
     end
   end
   object QryConsultaProductos: TADOQuery
-    Active = True
     Connection = DataModule1.ConexionLocal
     CursorType = ctStatic
     Parameters = <>

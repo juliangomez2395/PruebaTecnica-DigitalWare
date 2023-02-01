@@ -95,9 +95,10 @@ uses UDataModul;
 procedure TFrmCrudClientes.FormActivate(Sender: TObject);
 begin
   top := 20;
-  DataModule1.conexionSqlServer();
+
 
   DataModule1 := TDataModule1.create(application);
+  DataModule1.conexionSqlServer();
   QryClientesCreados.Active := true;
 end;
 
@@ -109,8 +110,9 @@ end;
 
 procedure TFrmCrudClientes.FormCreate(Sender: TObject);
 begin
-  DataModule1.conexionSqlServer();
+
   DataModule1 := TDataModule1.create(application);
+  DataModule1.conexionSqlServer();
 end;
 
 procedure TFrmCrudClientes.Edit1Exit(Sender: TObject);
@@ -126,34 +128,36 @@ begin
       Edit1.Text := EmptyStr;
       exit;
     END;
+    DataModule1 := TDataModule1.create(application);
+    QryConsulta.Close;
+    QryConsulta.SQL.Clear;
+    QryConsulta.SQL.Add('SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ' +
+      'SELECT CLIENTE, NOMBRE_CLIENTE, DIRECCION FROM CLIENTES WHERE CLIENTE =:CLIENTE  ');
+    QryConsulta.Parameters[0].Value := trim(Edit1.Text);
+    QryConsulta.Open;
+
+    if QryConsulta.RecordCount = 0 then
+    begin
+
+      BitBtn2.Enabled := true;
+      // BitBtn3.Enabled:=TRUE;
+      // BitBtn4.Enabled:=TRUE;
+
+    end
+    else
+    begin
+
+      Edit2.Text := QryConsultaNOMBRE_CLIENTE.AsString;
+      Edit3.Text := QryConsultaDIRECCION.AsString;
+      // BitBtn2.Enabled:=TRUE;
+      BitBtn3.Enabled := true;
+      BitBtn4.Enabled := true;
+
+    end;
+
   END;
 
-  DataModule1 := TDataModule1.create(application);
-  QryConsulta.Close;
-  QryConsulta.SQL.Clear;
-  QryConsulta.SQL.Add('SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ' +
-    'SELECT CLIENTE, NOMBRE_CLIENTE, DIRECCION FROM CLIENTES WHERE CLIENTE =:CLIENTE  ');
-  QryConsulta.Parameters[0].Value := trim(Edit1.Text);
-  QryConsulta.Open;
 
-  if QryConsulta.RecordCount = 0 then
-  begin
-
-    BitBtn2.Enabled := true;
-    // BitBtn3.Enabled:=TRUE;
-    // BitBtn4.Enabled:=TRUE;
-
-  end
-  else
-  begin
-
-    Edit2.Text := QryConsultaNOMBRE_CLIENTE.AsString;
-    Edit3.Text := QryConsultaDIRECCION.AsString;
-    // BitBtn2.Enabled:=TRUE;
-    BitBtn3.Enabled := true;
-    BitBtn4.Enabled := true;
-
-  end;
 end;
 
 procedure TFrmCrudClientes.Edit2Exit(Sender: TObject);

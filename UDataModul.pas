@@ -32,18 +32,18 @@ begin
   dataBase := 'PRUEBA';
   server := '192.168.20.117';
 
-  DataModule1 := TDataModule1.create(application);
+//  DataModule1 := TDataModule1.create(application);
 
-  DataModule1.ConexionLocal.Connected := FALSE;
-  DataModule1.ConexionLocal.ConnectionString := 'Provider=SQLOLEDB.1;Password='
+  ConexionLocal.Connected := FALSE;
+  ConexionLocal.ConnectionString := 'Provider=SQLOLEDB.1;Password='
     + password + ';Persist Security Info=True;User ID=' + user +
     ';Initial Catalog=' + dataBase + ';Data Source=' + server +
     ';Use Procedure for Prepare=1;';
-  DataModule1.ConexionLocal.ConnectionString :=
-    DataModule1.ConexionLocal.ConnectionString +
+  ConexionLocal.ConnectionString :=
+    ConexionLocal.ConnectionString +
     'Auto Translate=True;Packet Size=8192;Workstation ID=' + user +
     ';Use Encryption for Data=False;Tag with column collation when possible=False';
-  DataModule1.ConexionLocal.Connected := true;
+  ConexionLocal.Connected := true;
 end;
 
 end.

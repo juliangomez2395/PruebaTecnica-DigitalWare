@@ -31,7 +31,7 @@ var
 implementation
 
 uses USerieFibonacci, UCalculoSalarioSemanal, UCrudClientes,
-  UCrudProductos;
+  UCrudProductos, UDataModul;
 
 {$R *.dfm}
 
@@ -63,6 +63,7 @@ begin
   FrmCrudClientes := TFrmCrudClientes.create(application);
 
   try
+  
     FrmCrudClientes.Show;
   except
     FrmCrudClientes.free;
@@ -75,6 +76,7 @@ begin
   FrmCrudProductos := TFrmCrudProductos.create(application);
 
   try
+
     FrmCrudProductos.Show;
   except
     FrmCrudProductos.free;
