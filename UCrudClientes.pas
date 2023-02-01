@@ -52,6 +52,7 @@ type
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -329,6 +330,22 @@ procedure TFrmCrudClientes.DBGrid1DblClick(Sender: TObject);
 begin
   Edit1.Text := DBGrid1.Fields[0].AsString;
   Edit1Exit(self);
+end;
+
+procedure TFrmCrudClientes.BitBtn1Click(Sender: TObject);
+begin
+
+  if Edit1.Text=EmptyStr  then
+  begin
+
+    application.MessageBox(pchar('Por favor Digitar NIT Cliente '),
+      pchar('Información'), (MB_OK + MB_ICONEXCLAMATION));
+      Edit1.SetFocus;
+
+    exit;
+
+  end;
+
 end;
 
 end.

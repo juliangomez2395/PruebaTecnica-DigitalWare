@@ -336,6 +336,7 @@ object FrmCrudClientes: TFrmCrudClientes
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
+      OnClick = BitBtn1Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000120B0000120B00000000000000000000FFFFFFFFFFFF

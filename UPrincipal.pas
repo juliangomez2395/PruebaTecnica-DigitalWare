@@ -12,13 +12,20 @@ type
     asdasdad1: TMenuItem;
     SerieFibonacci1: TMenuItem;
     CalculoSalarioSemanal1: TMenuItem;
-    CRUDClientesManejodebasededatos1: TMenuItem;
     Imagen02: TImage;
-    CRUDProductos1: TMenuItem;
+    Crud1: TMenuItem;
+    ManejoBasesdeDatos1: TMenuItem;
+    Clientes1: TMenuItem;
+    Productos1: TMenuItem;
+    DetalleFactura1: TMenuItem;
+    CabezaFactura1: TMenuItem;
     procedure SerieFibonacci1Click(Sender: TObject);
     procedure CalculoSalarioSemanal1Click(Sender: TObject);
     procedure CRUDClientesManejodebasededatos1Click(Sender: TObject);
     procedure CRUDProductos1Click(Sender: TObject);
+    procedure Clientes1Click(Sender: TObject);
+    procedure Productos1Click(Sender: TObject);
+    procedure DetalleFactura1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +38,7 @@ var
 implementation
 
 uses USerieFibonacci, UCalculoSalarioSemanal, UCrudClientes,
-  UCrudProductos, UDataModul;
+  UCrudProductos, UDataModul, UCrudDetalleFactura;
 
 {$R *.dfm}
 
@@ -63,7 +70,7 @@ begin
   FrmCrudClientes := TFrmCrudClientes.create(application);
 
   try
-  
+
     FrmCrudClientes.Show;
   except
     FrmCrudClientes.free;
@@ -82,6 +89,42 @@ begin
     FrmCrudProductos.free;
   end;
 
+end;
+
+procedure TFRM_PRINCIPAL.Clientes1Click(Sender: TObject);
+begin
+  FrmCrudClientes := TFrmCrudClientes.create(application);
+
+  try
+
+    FrmCrudClientes.Show;
+  except
+    FrmCrudClientes.free;
+  end;
+end;
+
+procedure TFRM_PRINCIPAL.Productos1Click(Sender: TObject);
+begin
+   FrmCrudProductos := TFrmCrudProductos.create(application);
+
+  try
+
+    FrmCrudProductos.Show;
+  except
+    FrmCrudProductos.free;
+  end;
+end;
+
+procedure TFRM_PRINCIPAL.DetalleFactura1Click(Sender: TObject);
+begin
+   FrmCrudDetalleFactura := TFrmCrudDetalleFactura.create(application);
+
+  try
+
+    FrmCrudDetalleFactura.Show;
+  except
+    FrmCrudDetalleFactura.free;
+  end;
 end;
 
 end.

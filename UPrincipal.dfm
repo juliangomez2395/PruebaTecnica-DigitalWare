@@ -2751,13 +2751,26 @@ object FRM_PRINCIPAL: TFRM_PRINCIPAL
         Caption = 'Calculo Salario Semanal'
         OnClick = CalculoSalarioSemanal1Click
       end
-      object CRUDClientesManejodebasededatos1: TMenuItem
-        Caption = 'CRUD Clientes'
-        OnClick = CRUDClientesManejodebasededatos1Click
+      object Crud1: TMenuItem
+        Caption = 'CRUD Detalle Factura'
       end
-      object CRUDProductos1: TMenuItem
-        Caption = 'CRUD Productos'
-        OnClick = CRUDProductos1Click
+      object ManejoBasesdeDatos1: TMenuItem
+        Caption = 'Manejo Bases de Datos'
+        object Clientes1: TMenuItem
+          Caption = 'Clientes'
+          OnClick = Clientes1Click
+        end
+        object Productos1: TMenuItem
+          Caption = 'Productos'
+          OnClick = Productos1Click
+        end
+        object DetalleFactura1: TMenuItem
+          Caption = 'Detalle Factura'
+          OnClick = DetalleFactura1Click
+        end
+        object CabezaFactura1: TMenuItem
+          Caption = 'Cabeza Factura'
+        end
       end
     end
   end

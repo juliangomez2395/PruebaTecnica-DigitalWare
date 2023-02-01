@@ -1,11 +1,11 @@
-object FrmCrudProductos: TFrmCrudProductos
-  Left = 424
-  Top = 272
-  Width = 937
-  Height = 576
+object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
+  Left = 411
+  Top = 223
   AutoSize = True
-  BorderIcons = [biSystemMenu]
-  Color = clWhite
+  BorderStyle = bsSingle
+  ClientHeight = 537
+  ClientWidth = 921
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -15,9 +15,6 @@ object FrmCrudProductos: TFrmCrudProductos
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
-  OnActivate = FormActivate
-  OnClose = FormClose
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
@@ -25,13 +22,15 @@ object FrmCrudProductos: TFrmCrudProductos
     Top = 0
     Width = 921
     Height = 60
+    Color = clWhite
+    ParentColor = False
     TabOrder = 0
     object Label1: TLabel
-      Left = 396
+      Left = 376
       Top = 23
-      Width = 71
+      Width = 110
       Height = 16
-      Caption = 'Productos'
+      Caption = 'Cabeza Factura'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11829830
       Font.Height = -13
@@ -40,7 +39,7 @@ object FrmCrudProductos: TFrmCrudProductos
       ParentFont = False
     end
     object Image1: TImage
-      Left = 475
+      Left = 495
       Top = 7
       Width = 50
       Height = 50
@@ -283,13 +282,15 @@ object FrmCrudProductos: TFrmCrudProductos
     Top = 63
     Width = 921
     Height = 170
+    Color = clWhite
+    ParentColor = False
     TabOrder = 1
     object Label2: TLabel
       Left = 55
       Top = 29
-      Width = 63
+      Width = 55
       Height = 16
-      Caption = 'Producto'
+      Caption = 'Numero'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11829830
       Font.Height = -13
@@ -300,9 +301,9 @@ object FrmCrudProductos: TFrmCrudProductos
     object Label3: TLabel
       Left = 324
       Top = 29
-      Width = 122
+      Width = 44
       Height = 16
-      Caption = 'Nombre Producto'
+      Caption = 'Fecha'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11829830
       Font.Height = -13
@@ -313,9 +314,22 @@ object FrmCrudProductos: TFrmCrudProductos
     object Label4: TLabel
       Left = 612
       Top = 29
-      Width = 38
-      Height = 32
-      Caption = 'Valor'#13#10
+      Width = 49
+      Height = 16
+      Caption = 'Cliente'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 11829830
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 788
+      Top = 29
+      Width = 37
+      Height = 16
+      Caption = 'Total'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11829830
       Font.Height = -13
@@ -336,7 +350,6 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
-      OnClick = BitBtn1Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -451,7 +464,6 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 1
-      OnClick = BitBtn2Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000C3C3C3C3C3C3
@@ -566,7 +578,6 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
-      OnClick = BitBtn3Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -681,7 +692,6 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 3
-      OnClick = BitBtn4Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000C3C3C3C3C3C3
@@ -795,7 +805,6 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = []
       ParentFont = False
       TabOrder = 4
-      OnExit = Edit1Exit
     end
     object Edit2: TEdit
       Left = 324
@@ -810,7 +819,6 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = []
       ParentFont = False
       TabOrder = 5
-      OnExit = Edit2Exit
     end
     object Edit3: TEdit
       Left = 612
@@ -825,7 +833,6 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = []
       ParentFont = False
       TabOrder = 6
-      OnKeyUp = Edit3KeyUp
     end
     object BitBtn5: TBitBtn
       Left = 585
@@ -840,7 +847,6 @@ object FrmCrudProductos: TFrmCrudProductos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 7
-      OnClick = BitBtn5Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -947,13 +953,14 @@ object FrmCrudProductos: TFrmCrudProductos
     Top = 232
     Width = 921
     Height = 305
+    Color = clWhite
+    ParentColor = False
     TabOrder = 2
     object DBGrid1: TDBGrid
       Left = 8
       Top = 16
       Width = 905
       Height = 281
-      DataSource = DataSource1
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
       ReadOnly = True
       TabOrder = 0
@@ -962,7 +969,6 @@ object FrmCrudProductos: TFrmCrudProductos
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
-      OnDblClick = DBGrid1DblClick
       Columns = <
         item
           Expanded = False
@@ -982,69 +988,6 @@ object FrmCrudProductos: TFrmCrudProductos
           Width = 290
           Visible = True
         end>
-    end
-  end
-  object DataSource1: TDataSource
-    DataSet = QryProductosCreados
-    Left = 168
-    Top = 328
-  end
-  object QryProductosCreados: TADOQuery
-    Connection = DataModule1.ConexionLocal
-    CursorType = ctStatic
-    Parameters = <>
-    SQL.Strings = (
-      'select * from PRODUCTOS')
-    Left = 112
-    Top = 328
-    object QryProductosCreadosPRODUCTO: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'PRODUCTO'
-    end
-    object QryProductosCreadosNOMBRE_PRODUCTO: TStringField
-      FieldName = 'NOMBRE_PRODUCTO'
-      Size = 50
-    end
-    object QryProductosCreadosVALOR: TFloatField
-      FieldName = 'VALOR'
-    end
-  end
-  object QryCrudProductos: TADOQuery
-    Connection = DataModule1.ConexionLocal
-    CursorType = ctStatic
-    Parameters = <>
-    SQL.Strings = (
-      'select * from PRODUCTOS')
-    Left = 112
-    Top = 376
-    object QryCrudProductosPRODUCTO: TIntegerField
-      FieldName = 'PRODUCTO'
-    end
-    object QryCrudProductosNOMBRE_PRODUCTO: TStringField
-      FieldName = 'NOMBRE_PRODUCTO'
-      Size = 50
-    end
-    object QryCrudProductosVALOR: TFloatField
-      FieldName = 'VALOR'
-    end
-  end
-  object QryConsultaProductos: TADOQuery
-    Connection = DataModule1.ConexionLocal
-    CursorType = ctStatic
-    Parameters = <>
-    SQL.Strings = (
-      'select * from PRODUCTOS')
-    Left = 168
-    Top = 376
-    object QryConsultaProductosPRODUCTO: TIntegerField
-      FieldName = 'PRODUCTO'
-    end
-    object QryConsultaProductosNOMBRE_PRODUCTO: TStringField
-      FieldName = 'NOMBRE_PRODUCTO'
-      Size = 50
-    end
-    object QryConsultaProductosVALOR: TFloatField
-      FieldName = 'VALOR'
     end
   end
 end
