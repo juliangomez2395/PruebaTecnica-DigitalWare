@@ -1,11 +1,12 @@
-object FrmCrudClientes: TFrmCrudClientes
-  Left = 561
-  Top = 351
-  Width = 937
-  Height = 576
+object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
+  Left = 578
+  Top = 243
   AutoSize = True
   BorderIcons = [biSystemMenu]
-  Color = clWhite
+  BorderStyle = bsSingle
+  ClientHeight = 537
+  ClientWidth = 921
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -25,13 +26,15 @@ object FrmCrudClientes: TFrmCrudClientes
     Top = 0
     Width = 921
     Height = 60
+    Color = clWhite
+    ParentColor = False
     TabOrder = 0
     object Label1: TLabel
-      Left = 288
-      Top = 22
-      Width = 289
+      Left = 376
+      Top = 23
+      Width = 107
       Height = 16
-      Caption = 'CRUD Clientes. Manejo de base de datos'
+      Caption = 'Detalle Factura'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11829830
       Font.Height = -13
@@ -40,8 +43,8 @@ object FrmCrudClientes: TFrmCrudClientes
       ParentFont = False
     end
     object Image1: TImage
-      Left = 583
-      Top = 6
+      Left = 495
+      Top = 7
       Width = 50
       Height = 50
       Picture.Data = {
@@ -283,13 +286,15 @@ object FrmCrudClientes: TFrmCrudClientes
     Top = 63
     Width = 921
     Height = 170
+    Color = clWhite
+    ParentColor = False
     TabOrder = 1
     object Label2: TLabel
-      Left = 55
+      Left = 91
       Top = 29
-      Width = 103
+      Width = 55
       Height = 16
-      Caption = 'NIT (CLIENTE)'
+      Caption = 'Numero'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11829830
       Font.Height = -13
@@ -298,11 +303,11 @@ object FrmCrudClientes: TFrmCrudClientes
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 324
+      Left = 360
       Top = 29
-      Width = 132
+      Width = 63
       Height = 16
-      Caption = 'Nombre del cliente'
+      Caption = 'Producto'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11829830
       Font.Height = -13
@@ -311,11 +316,24 @@ object FrmCrudClientes: TFrmCrudClientes
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 612
+      Left = 624
       Top = 29
-      Width = 67
+      Width = 63
       Height = 16
-      Caption = 'Direccion'
+      Caption = 'Cantidad'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 11829830
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 714
+      Top = 29
+      Width = 38
+      Height = 16
+      Caption = 'Valor'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11829830
       Font.Height = -13
@@ -324,7 +342,7 @@ object FrmCrudClientes: TFrmCrudClientes
       ParentFont = False
     end
     object BitBtn1: TBitBtn
-      Left = 203
+      Left = 239
       Top = 43
       Width = 115
       Height = 41
@@ -443,7 +461,6 @@ object FrmCrudClientes: TFrmCrudClientes
       Width = 115
       Height = 41
       Caption = 'Insertar'
-      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -558,7 +575,6 @@ object FrmCrudClientes: TFrmCrudClientes
       Width = 115
       Height = 41
       Caption = 'Modificar'
-      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -673,7 +689,6 @@ object FrmCrudClientes: TFrmCrudClientes
       Width = 115
       Height = 41
       Caption = 'Eliminar'
-      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -782,10 +797,10 @@ object FrmCrudClientes: TFrmCrudClientes
         C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
         C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3}
     end
-    object Edit1: TEdit
-      Left = 55
+    object Edit3: TEdit
+      Left = 624
       Top = 51
-      Width = 142
+      Width = 69
       Height = 24
       CharCase = ecUpperCase
       Font.Charset = ANSI_CHARSET
@@ -795,36 +810,8 @@ object FrmCrudClientes: TFrmCrudClientes
       Font.Style = []
       ParentFont = False
       TabOrder = 4
-      OnExit = Edit1Exit
-    end
-    object Edit2: TEdit
-      Left = 324
-      Top = 51
-      Width = 282
-      Height = 24
-      CharCase = ecUpperCase
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 5
-      OnExit = Edit2Exit
-    end
-    object Edit3: TEdit
-      Left = 612
-      Top = 51
-      Width = 254
-      Height = 24
-      CharCase = ecUpperCase
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 6
+      OnChange = Edit3Change
+      OnExit = Edit3Exit
     end
     object BitBtn5: TBitBtn
       Left = 585
@@ -838,7 +825,7 @@ object FrmCrudClientes: TFrmCrudClientes
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 5
       OnClick = BitBtn5Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
@@ -940,19 +927,73 @@ object FrmCrudClientes: TFrmCrudClientes
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     end
+    object Edit2: TEdit
+      Left = 714
+      Top = 51
+      Width = 117
+      Height = 24
+      CharCase = ecUpperCase
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 6
+      OnKeyUp = Edit2KeyUp
+    end
+    object DBLookupComboBox1: TDBLookupComboBox
+      Left = 364
+      Top = 51
+      Width = 238
+      Height = 24
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      KeyField = 'PRODUCTO'
+      ListField = 'NOMBRE_PRODUCTO'
+      ListFieldIndex = -1
+      ListSource = DtsProducto
+      ParentFont = False
+      TabOrder = 7
+      OnExit = DBLookupComboBox1Exit
+    end
+    object DBLookupComboBox2: TDBLookupComboBox
+      Left = 92
+      Top = 51
+      Width = 133
+      Height = 24
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      KeyField = 'NUMERO'
+      ListField = 'FACTURA'
+      ListFieldIndex = -1
+      ListSource = DtsNumero
+      ParentFont = False
+      TabOrder = 8
+      OnExit = DBLookupComboBox1Exit
+    end
   end
   object GroupBox3: TGroupBox
     Left = 0
     Top = 232
     Width = 921
     Height = 305
+    Color = clWhite
+    ParentColor = False
     TabOrder = 2
     object DBGrid1: TDBGrid
       Left = 8
       Top = 16
       Width = 905
       Height = 281
-      DataSource = DtsClienteCRUD
+      DataSource = DtsDetalleFacturaCreados
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
       ReadOnly = True
       TabOrder = 0
@@ -964,121 +1005,192 @@ object FrmCrudClientes: TFrmCrudClientes
       OnDblClick = DBGrid1DblClick
       Columns = <
         item
+          Alignment = taLeftJustify
           Expanded = False
-          FieldName = 'CLIENTE'
-          Width = 295
+          FieldName = 'NUMERO'
+          Width = 220
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'NOMBRE_CLIENTE'
-          Width = 295
+          FieldName = 'NOMBRE_PRODUCTO'
+          Width = 220
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'DIRECCION'
-          Width = 295
+          FieldName = 'CANTIDAD'
+          Width = 220
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'VALOR'
+          Width = 220
           Visible = True
         end>
     end
   end
-  object QryClientesCreados: TADOQuery
-    CacheSize = 10000
+  object QryProdcuto: TADOQuery
     Connection = DataModule1.ConexionLocal
     CursorType = ctStatic
-    LockType = ltReadOnly
-    CommandTimeout = 10000
     Parameters = <>
     SQL.Strings = (
-      'SELECT CLIENTE, NOMBRE_CLIENTE, DIRECCION FROM CLIENTES')
-    Left = 72
-    Top = 319
-    object QryClientesCreadosCLIENTE: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'CLIENTE'
+      'select PRODUCTO, NOMBRE_PRODUCTO from PRODUCTOS')
+    Left = 448
+    Top = 79
+    object QryProdcutoPRODUCTO: TIntegerField
+      FieldName = 'PRODUCTO'
     end
-    object QryClientesCreadosNOMBRE_CLIENTE: TStringField
-      FieldName = 'NOMBRE_CLIENTE'
-      Size = 50
-    end
-    object QryClientesCreadosDIRECCION: TStringField
-      FieldName = 'DIRECCION'
+    object QryProdcutoNOMBRE_PRODUCTO: TStringField
+      FieldName = 'NOMBRE_PRODUCTO'
       Size = 50
     end
   end
-  object DtsClienteCRUD: TDataSource
-    DataSet = QryClientesCreados
-    Left = 176
-    Top = 319
+  object DtsProducto: TDataSource
+    DataSet = QryProdcuto
+    Left = 488
+    Top = 79
   end
-  object QryConsulta: TADOQuery
-    CacheSize = 10000
+  object QryDetalleFacturaCreados: TADOQuery
     Connection = DataModule1.ConexionLocal
     CursorType = ctStatic
-    LockType = ltReadOnly
-    CommandTimeout = 10000
     Parameters = <>
     SQL.Strings = (
-      'SELECT CLIENTE, NOMBRE_CLIENTE, DIRECCION FROM CLIENTES')
-    Left = 72
-    Top = 384
-    object QryConsultaCLIENTE: TIntegerField
-      FieldName = 'CLIENTE'
+      
+        'SELECT a.NUMERO, B.NOMBRE_PRODUCTO, A.CANTIDAD, A.VALOR FROM DET' +
+        'ALLE_FACTURA A INNER JOIN PRODUCTOS B ON A.PRODUCTO=B.PRODUCTO')
+    Left = 136
+    Top = 304
+    object QryDetalleFacturaCreadosNUMERO: TIntegerField
+      FieldName = 'NUMERO'
     end
-    object QryConsultaNOMBRE_CLIENTE: TStringField
-      FieldName = 'NOMBRE_CLIENTE'
+    object QryDetalleFacturaCreadosNOMBRE_PRODUCTO: TStringField
+      FieldName = 'NOMBRE_PRODUCTO'
       Size = 50
     end
-    object QryConsultaDIRECCION: TStringField
-      FieldName = 'DIRECCION'
-      Size = 50
+    object QryDetalleFacturaCreadosCANTIDAD: TIntegerField
+      FieldName = 'CANTIDAD'
+    end
+    object QryDetalleFacturaCreadosVALOR: TFloatField
+      FieldName = 'VALOR'
     end
   end
-  object QryInsert: TADOQuery
-    CacheSize = 10000
+  object DtsDetalleFacturaCreados: TDataSource
+    DataSet = QryDetalleFacturaCreados
+    Left = 184
+    Top = 304
+  end
+  object QryConsultaDetalleFactura: TADOQuery
     Connection = DataModule1.ConexionLocal
-    CursorType = ctStatic
-    CommandTimeout = 10000
     Parameters = <>
     SQL.Strings = (
-      'SELECT CLIENTE, NOMBRE_CLIENTE, DIRECCION FROM CLIENTES')
-    Left = 160
-    Top = 384
-    object QryInsertCLIENTE: TIntegerField
-      FieldName = 'CLIENTE'
+      
+        'SELECT a.NUMERO, a.PRODUCTO, B.NOMBRE_PRODUCTO, A.CANTIDAD, A.VA' +
+        'LOR*A.CANTIDAD AS TOTAL FROM DETALLE_FACTURA A INNER JOIN PRODUC' +
+        'TOS B ON A.PRODUCTO=B.PRODUCTO')
+    Left = 136
+    Top = 352
+    object QryConsultaDetalleFacturaNUMERO: TIntegerField
+      FieldName = 'NUMERO'
     end
-    object QryInsertNOMBRE_CLIENTE: TStringField
-      FieldName = 'NOMBRE_CLIENTE'
+    object QryConsultaDetalleFacturaPRODUCTO: TIntegerField
+      FieldName = 'PRODUCTO'
+    end
+    object QryConsultaDetalleFacturaNOMBRE_PRODUCTO: TStringField
+      FieldName = 'NOMBRE_PRODUCTO'
       Size = 50
     end
-    object QryInsertDIRECCION: TStringField
-      FieldName = 'DIRECCION'
-      Size = 50
+    object QryConsultaDetalleFacturaCANTIDAD: TIntegerField
+      FieldName = 'CANTIDAD'
+    end
+    object QryConsultaDetalleFacturaTOTAL: TFloatField
+      FieldName = 'TOTAL'
+      ReadOnly = True
     end
   end
-  object QryUpdate: TADOQuery
-    CacheSize = 10000
+  object QryTraerValorProducto: TADOQuery
     Connection = DataModule1.ConexionLocal
-    CursorType = ctStatic
-    LockType = ltReadOnly
-    CommandTimeout = 10000
     Parameters = <>
     SQL.Strings = (
-      'SELECT CLIENTE, NOMBRE_CLIENTE, DIRECCION FROM CLIENTES')
-    Left = 224
-    Top = 384
+      'select valor from PRODUCTOS')
+    Left = 848
+    Top = 104
+    object QryTraerValorProductovalor: TFloatField
+      FieldName = 'valor'
+    end
+  end
+  object QryCrudDetalleFactura: TADOQuery
+    Connection = DataModule1.ConexionLocal
+    Parameters = <>
+    SQL.Strings = (
+      'select * from DETALLE_FACTURA')
+    Left = 184
+    Top = 352
+    object QryCrudDetalleFacturaNUMERO: TIntegerField
+      FieldName = 'NUMERO'
+    end
+    object QryCrudDetalleFacturaPRODUCTO: TIntegerField
+      FieldName = 'PRODUCTO'
+    end
+    object QryCrudDetalleFacturaCANTIDAD: TIntegerField
+      FieldName = 'CANTIDAD'
+    end
+    object QryCrudDetalleFacturaVALOR: TFloatField
+      FieldName = 'VALOR'
+    end
+  end
+  object QryNumero: TADOQuery
+    Connection = DataModule1.ConexionLocal
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'select A.NUMERO,CONCAT('#39'Factura No. '#39',A.NUMERO)as FACTURA from C' +
+        'ABEZA_FACTURA A'
+      'group by A.NUMERO')
+    Left = 88
+    Top = 143
+    object QryNumeroNUMERO: TIntegerField
+      FieldName = 'NUMERO'
+    end
+    object QryNumeroFACTURA: TStringField
+      FieldName = 'FACTURA'
+      ReadOnly = True
+      Size = 24
+    end
+  end
+  object DtsNumero: TDataSource
+    DataSet = QryNumero
+    Left = 136
+    Top = 143
+  end
+  object QryValorCabezaFactura: TADOQuery
+    Connection = DataModule1.ConexionLocal
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT a.NUMERO, a.PRODUCTO, B.NOMBRE_PRODUCTO, A.CANTIDAD, A.VA' +
+        'LOR*A.CANTIDAD AS TOTAL FROM DETALLE_FACTURA A INNER JOIN PRODUC' +
+        'TOS B ON A.PRODUCTO=B.PRODUCTO')
+    Left = 136
+    Top = 400
+    object IntegerField1: TIntegerField
+      FieldName = 'NUMERO'
+    end
+    object IntegerField2: TIntegerField
+      FieldName = 'PRODUCTO'
+    end
+    object StringField1: TStringField
+      FieldName = 'NOMBRE_PRODUCTO'
+      Size = 50
+    end
     object IntegerField3: TIntegerField
-      Alignment = taLeftJustify
-      FieldName = 'CLIENTE'
+      FieldName = 'CANTIDAD'
     end
-    object StringField5: TStringField
-      FieldName = 'NOMBRE_CLIENTE'
-      Size = 50
-    end
-    object StringField6: TStringField
-      FieldName = 'DIRECCION'
-      Size = 50
+    object FloatField1: TFloatField
+      FieldName = 'TOTAL'
+      ReadOnly = True
     end
   end
 end

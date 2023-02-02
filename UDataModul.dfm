@@ -1,10 +1,11 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 331
-  Top = 239
+  Left = 497
+  Top = 252
   Height = 456
   Width = 694
   object ConexionLocal: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=Colombia01+;Persist Security Info=T' +
       'rue;User ID=sa;Initial Catalog=PRUEBA;Data Source=192.168.20.117' +

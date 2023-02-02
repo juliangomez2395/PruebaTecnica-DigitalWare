@@ -52,11 +52,12 @@ type
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    procedure conexionSqlServer();
+//    procedure conexionSqlServer();
   end;
 
 var
@@ -68,36 +69,37 @@ uses UDataModul;
 
 {$R *.dfm}
 
-procedure TFrmCrudClientes.conexionSqlServer();
-var
-  password, user, dataBase, server: string;
-
-begin
-  password := 'Colombia01+';
-  user := 'sa';
-  dataBase := 'PRUEBA';
-  server := '192.168.20.117';
-
-  DataModule1 := TDataModule1.create(application);
-
-  DataModule1.ConexionLocal.Connected := FALSE;
-  DataModule1.ConexionLocal.ConnectionString := 'Provider=SQLOLEDB.1;Password='
-    + password + ';Persist Security Info=True;User ID=' + user +
-    ';Initial Catalog=' + dataBase + ';Data Source=' + server +
-    ';Use Procedure for Prepare=1;';
-  DataModule1.ConexionLocal.ConnectionString :=
-    DataModule1.ConexionLocal.ConnectionString +
-    'Auto Translate=True;Packet Size=8192;Workstation ID=' + user +
-    ';Use Encryption for Data=False;Tag with column collation when possible=False';
-  DataModule1.ConexionLocal.Connected := true;
-end;
+//procedure TFrmCrudClientes.conexionSqlServer();
+//var
+//  password, user, dataBase, server: string;
+//
+//begin
+//  password := 'Colombia01+';
+//  user := 'sa';
+//  dataBase := 'PRUEBA';
+//  server := '192.168.20.117';
+//
+//  DataModule1 := TDataModule1.create(application);
+//
+//  DataModule1.ConexionLocal.Connected := FALSE;
+//  DataModule1.ConexionLocal.ConnectionString := 'Provider=SQLOLEDB.1;Password='
+//    + password + ';Persist Security Info=True;User ID=' + user +
+//    ';Initial Catalog=' + dataBase + ';Data Source=' + server +
+//    ';Use Procedure for Prepare=1;';
+//  DataModule1.ConexionLocal.ConnectionString :=
+//    DataModule1.ConexionLocal.ConnectionString +
+//    'Auto Translate=True;Packet Size=8192;Workstation ID=' + user +
+//    ';Use Encryption for Data=False;Tag with column collation when possible=False';
+//  DataModule1.ConexionLocal.Connected := true;
+//end;
 
 procedure TFrmCrudClientes.FormActivate(Sender: TObject);
 begin
   top := 20;
-  conexionSqlServer();
+
 
   DataModule1 := TDataModule1.create(application);
+  DataModule1.conexionSqlServer();
   QryClientesCreados.Active := true;
 end;
 
@@ -109,8 +111,9 @@ end;
 
 procedure TFrmCrudClientes.FormCreate(Sender: TObject);
 begin
-  conexionSqlServer();
+
   DataModule1 := TDataModule1.create(application);
+  DataModule1.conexionSqlServer();
 end;
 
 procedure TFrmCrudClientes.Edit1Exit(Sender: TObject);
@@ -126,34 +129,36 @@ begin
       Edit1.Text := EmptyStr;
       exit;
     END;
+    DataModule1 := TDataModule1.create(application);
+    QryConsulta.Close;
+    QryConsulta.SQL.Clear;
+    QryConsulta.SQL.Add('SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ' +
+      'SELECT CLIENTE, NOMBRE_CLIENTE, DIRECCION FROM CLIENTES WHERE CLIENTE =:CLIENTE  ');
+    QryConsulta.Parameters[0].Value := trim(Edit1.Text);
+    QryConsulta.Open;
+
+    if QryConsulta.RecordCount = 0 then
+    begin
+
+      BitBtn2.Enabled := true;
+      // BitBtn3.Enabled:=TRUE;
+      // BitBtn4.Enabled:=TRUE;
+
+    end
+    else
+    begin
+
+      Edit2.Text := QryConsultaNOMBRE_CLIENTE.AsString;
+      Edit3.Text := QryConsultaDIRECCION.AsString;
+      // BitBtn2.Enabled:=TRUE;
+      BitBtn3.Enabled := true;
+      BitBtn4.Enabled := true;
+
+    end;
+
   END;
 
-  DataModule1 := TDataModule1.create(application);
-  QryConsulta.Close;
-  QryConsulta.SQL.Clear;
-  QryConsulta.SQL.Add('SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ' +
-    'SELECT CLIENTE, NOMBRE_CLIENTE, DIRECCION FROM CLIENTES WHERE CLIENTE =:CLIENTE  ');
-  QryConsulta.Parameters[0].Value := trim(Edit1.Text);
-  QryConsulta.Open;
 
-  if QryConsulta.RecordCount = 0 then
-  begin
-
-    BitBtn2.Enabled := true;
-    // BitBtn3.Enabled:=TRUE;
-    // BitBtn4.Enabled:=TRUE;
-
-  end
-  else
-  begin
-
-    Edit2.Text := QryConsultaNOMBRE_CLIENTE.AsString;
-    Edit3.Text := QryConsultaDIRECCION.AsString;
-    // BitBtn2.Enabled:=TRUE;
-    BitBtn3.Enabled := true;
-    BitBtn4.Enabled := true;
-
-  end;
 end;
 
 procedure TFrmCrudClientes.Edit2Exit(Sender: TObject);
@@ -325,6 +330,22 @@ procedure TFrmCrudClientes.DBGrid1DblClick(Sender: TObject);
 begin
   Edit1.Text := DBGrid1.Fields[0].AsString;
   Edit1Exit(self);
+end;
+
+procedure TFrmCrudClientes.BitBtn1Click(Sender: TObject);
+begin
+
+  if Edit1.Text=EmptyStr  then
+  begin
+
+    application.MessageBox(pchar('Por favor Digitar NIT Cliente '),
+      pchar('Información'), (MB_OK + MB_ICONEXCLAMATION));
+      Edit1.SetFocus;
+
+    exit;
+
+  end;
+
 end;
 
 end.
