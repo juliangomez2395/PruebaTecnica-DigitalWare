@@ -1,6 +1,6 @@
 object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
-  Left = 541
-  Top = 257
+  Left = 578
+  Top = 243
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -461,7 +461,6 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
       Width = 115
       Height = 41
       Caption = 'Insertar'
-      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -576,7 +575,6 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
       Width = 115
       Height = 41
       Caption = 'Modificar'
-      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -584,6 +582,7 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
+      OnClick = BitBtn3Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -690,7 +689,6 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
       Width = 115
       Height = 41
       Caption = 'Eliminar'
-      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -698,6 +696,7 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 3
+      OnClick = BitBtn4Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000C3C3C3C3C3C3
@@ -1003,6 +1002,7 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      OnDblClick = DBGrid1DblClick
       Columns = <
         item
           Alignment = taLeftJustify
@@ -1025,7 +1025,7 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
         end
         item
           Expanded = False
-          FieldName = 'TOTAL'
+          FieldName = 'VALOR'
           Width = 220
           Visible = True
         end>
@@ -1036,9 +1036,7 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      
-        'SELECT B.PRODUCTO, B.NOMBRE_PRODUCTO FROM DETALLE_FACTURA A INNE' +
-        'R JOIN PRODUCTOS B ON A.PRODUCTO=B.PRODUCTO')
+      'select PRODUCTO, NOMBRE_PRODUCTO from PRODUCTOS')
     Left = 448
     Top = 79
     object QryProdcutoPRODUCTO: TIntegerField
@@ -1060,9 +1058,8 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
     Parameters = <>
     SQL.Strings = (
       
-        'SELECT a.NUMERO, B.NOMBRE_PRODUCTO, A.CANTIDAD, A.VALOR*A.CANTID' +
-        'AD AS TOTAL FROM DETALLE_FACTURA A INNER JOIN PRODUCTOS B ON A.P' +
-        'RODUCTO=B.PRODUCTO')
+        'SELECT a.NUMERO, B.NOMBRE_PRODUCTO, A.CANTIDAD, A.VALOR FROM DET' +
+        'ALLE_FACTURA A INNER JOIN PRODUCTOS B ON A.PRODUCTO=B.PRODUCTO')
     Left = 136
     Top = 304
     object QryDetalleFacturaCreadosNUMERO: TIntegerField
@@ -1075,9 +1072,8 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
     object QryDetalleFacturaCreadosCANTIDAD: TIntegerField
       FieldName = 'CANTIDAD'
     end
-    object QryDetalleFacturaCreadosTOTAL: TFloatField
-      FieldName = 'TOTAL'
-      ReadOnly = True
+    object QryDetalleFacturaCreadosVALOR: TFloatField
+      FieldName = 'VALOR'
     end
   end
   object DtsDetalleFacturaCreados: TDataSource
@@ -1150,9 +1146,9 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
     Parameters = <>
     SQL.Strings = (
       
-        'select A.NUMERO,CONCAT('#39'Factura No. '#39',A.NUMERO)as FACTURA from D' +
-        'ETALLE_FACTURA A INNER JOIN CABEZA_FACTURA B ON A.NUMERO=B.NUMER' +
-        'O')
+        'select A.NUMERO,CONCAT('#39'Factura No. '#39',A.NUMERO)as FACTURA from C' +
+        'ABEZA_FACTURA A'
+      'group by A.NUMERO')
     Left = 88
     Top = 143
     object QryNumeroNUMERO: TIntegerField

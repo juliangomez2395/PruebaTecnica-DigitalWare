@@ -1,6 +1,6 @@
 object FRM_PRINCIPAL: TFRM_PRINCIPAL
-  Left = 192
-  Top = 125
+  Left = 288
+  Top = 132
   BorderStyle = bsSingle
   Caption = 'PRUEBA TECNICA DIGITALWARE'
   ClientHeight = 616

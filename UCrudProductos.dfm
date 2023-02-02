@@ -1,6 +1,6 @@
 object FrmCrudProductos: TFrmCrudProductos
-  Left = 424
-  Top = 272
+  Left = 636
+  Top = 287
   Width = 937
   Height = 576
   AutoSize = True

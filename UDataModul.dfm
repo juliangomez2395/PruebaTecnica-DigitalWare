@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 331
-  Top = 239
+  Left = 497
+  Top = 252
   Height = 456
   Width = 694
   object ConexionLocal: TADOConnection

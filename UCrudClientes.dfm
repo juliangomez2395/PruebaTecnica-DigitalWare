@@ -1,6 +1,6 @@
 object FrmCrudClientes: TFrmCrudClientes
-  Left = 374
-  Top = 333
+  Left = 561
+  Top = 351
   Width = 937
   Height = 576
   AutoSize = True
