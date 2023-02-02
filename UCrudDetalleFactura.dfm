@@ -1165,4 +1165,32 @@ object FrmCrudDetalleFactura: TFrmCrudDetalleFactura
     Left = 136
     Top = 143
   end
+  object QryValorCabezaFactura: TADOQuery
+    Connection = DataModule1.ConexionLocal
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT a.NUMERO, a.PRODUCTO, B.NOMBRE_PRODUCTO, A.CANTIDAD, A.VA' +
+        'LOR*A.CANTIDAD AS TOTAL FROM DETALLE_FACTURA A INNER JOIN PRODUC' +
+        'TOS B ON A.PRODUCTO=B.PRODUCTO')
+    Left = 136
+    Top = 400
+    object IntegerField1: TIntegerField
+      FieldName = 'NUMERO'
+    end
+    object IntegerField2: TIntegerField
+      FieldName = 'PRODUCTO'
+    end
+    object StringField1: TStringField
+      FieldName = 'NOMBRE_PRODUCTO'
+      Size = 50
+    end
+    object IntegerField3: TIntegerField
+      FieldName = 'CANTIDAD'
+    end
+    object FloatField1: TFloatField
+      FieldName = 'TOTAL'
+      ReadOnly = True
+    end
+  end
 end

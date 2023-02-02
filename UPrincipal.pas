@@ -13,7 +13,6 @@ type
     SerieFibonacci1: TMenuItem;
     CalculoSalarioSemanal1: TMenuItem;
     Imagen02: TImage;
-    Crud1: TMenuItem;
     ManejoBasesdeDatos1: TMenuItem;
     Clientes1: TMenuItem;
     Productos1: TMenuItem;
@@ -26,6 +25,7 @@ type
     procedure Clientes1Click(Sender: TObject);
     procedure Productos1Click(Sender: TObject);
     procedure DetalleFactura1Click(Sender: TObject);
+    procedure CabezaFactura1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +38,7 @@ var
 implementation
 
 uses USerieFibonacci, UCalculoSalarioSemanal, UCrudClientes,
-  UCrudProductos, UDataModul, UCrudDetalleFactura;
+  UCrudProductos, UDataModul, UCrudDetalleFactura, UCrudCabezaFactura;
 
 {$R *.dfm}
 
@@ -125,6 +125,20 @@ begin
   except
     FrmCrudDetalleFactura.free;
   end;
+end;
+
+procedure TFRM_PRINCIPAL.CabezaFactura1Click(Sender: TObject);
+begin
+
+  FrmCrudCabezaFactura := TFrmCrudCabezaFactura.create(application);
+
+  try
+
+    FrmCrudCabezaFactura.Show;
+  except
+    FrmCrudCabezaFactura.free;
+  end;
+
 end;
 
 end.

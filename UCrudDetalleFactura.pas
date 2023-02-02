@@ -54,6 +54,12 @@ type
     QryDetalleFacturaCreadosVALOR: TFloatField;
     QryNumeroNUMERO: TIntegerField;
     QryNumeroFACTURA: TStringField;
+    QryValorCabezaFactura: TADOQuery;
+    IntegerField1: TIntegerField;
+    IntegerField2: TIntegerField;
+    StringField1: TStringField;
+    IntegerField3: TIntegerField;
+    FloatField1: TFloatField;
     procedure BitBtn5Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn1Click(Sender: TObject);
@@ -286,6 +292,18 @@ begin
       QryCrudDetalleFacturaVALOR.Value := StrToFloat(StringReplace(trim(Edit2.Text), '', '.', [rfReplaceAll]));
 
       QryCrudDetalleFactura.Post;
+
+//      -----------------------
+
+      QryValorCabezaFactura.Close;
+      QryValorCabezaFactura.SQL.Clear;
+      QryValorCabezaFactura.SQL.Add('UPDATE A SET A.TOTAL=TABLA1.TOTAL FROM CABEZA_FACTURA A INNER JOIN(                             ' +
+                'SELECT A.NUMERO, A.FECHA, A.CLIENTE,                                                             '+                 
+                    'ISNULL((SELECT SUM(B.VALOR*B.CANTIDAD) AS TOTAL FROM DETALLE_FACTURA B WHERE B.NUMERO=A.NUMERO),0) AS TOTAL      '+
+                    ' FROM CABEZA_FACTURA A                                                                                             '+
+                    ' )TABLA1 ON A.NUMERO=TABLA1.NUMERO WHERE A.NUMERO=:NUMERO ');
+      QryValorCabezaFactura.Parameters[0].Value:= (DBLookupComboBox2.KeyValue);
+      QryValorCabezaFactura.ExecSQL;
 
       application.MessageBox(pchar('Registro guardado con exito. '),
         pchar('Información'), (MB_OK + MB_ICONINFORMATION));

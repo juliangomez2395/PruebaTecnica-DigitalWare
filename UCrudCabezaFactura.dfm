@@ -2,6 +2,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
   Left = 411
   Top = 223
   AutoSize = True
+  BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   ClientHeight = 537
   ClientWidth = 921
@@ -15,6 +16,8 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
+  OnActivate = FormActivate
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
@@ -286,7 +289,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
     ParentColor = False
     TabOrder = 1
     object Label2: TLabel
-      Left = 55
+      Left = 38
       Top = 29
       Width = 55
       Height = 16
@@ -299,7 +302,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 324
+      Left = 315
       Top = 29
       Width = 44
       Height = 16
@@ -312,7 +315,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 612
+      Left = 442
       Top = 29
       Width = 49
       Height = 16
@@ -325,7 +328,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 788
+      Left = 739
       Top = 29
       Width = 37
       Height = 16
@@ -338,7 +341,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       ParentFont = False
     end
     object BitBtn1: TBitBtn
-      Left = 203
+      Left = 186
       Top = 43
       Width = 115
       Height = 41
@@ -350,6 +353,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
+      OnClick = BitBtn1Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000120B0000120B00000000000000000000FFFFFFFFFFFF
@@ -464,6 +468,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 1
+      OnClick = BitBtn2Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000C3C3C3C3C3C3
@@ -578,6 +583,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
+      OnClick = BitBtn3Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -692,6 +698,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 3
+      OnClick = BitBtn4Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000C3C3C3C3C3C3
@@ -793,7 +800,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
         C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3}
     end
     object Edit1: TEdit
-      Left = 55
+      Left = 38
       Top = 51
       Width = 142
       Height = 24
@@ -805,34 +812,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       Font.Style = []
       ParentFont = False
       TabOrder = 4
-    end
-    object Edit2: TEdit
-      Left = 324
-      Top = 51
-      Width = 282
-      Height = 24
-      CharCase = ecUpperCase
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 5
-    end
-    object Edit3: TEdit
-      Left = 612
-      Top = 51
-      Width = 254
-      Height = 24
-      CharCase = ecUpperCase
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 6
+      OnExit = Edit1Exit
     end
     object BitBtn5: TBitBtn
       Left = 585
@@ -846,7 +826,8 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 5
+      OnClick = BitBtn5Click
       Glyph.Data = {
         360C0000424D360C000000000000360000002800000020000000200000000100
         180000000000000C0000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -947,6 +928,52 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
     end
+    object DBLookupComboBox1: TDBLookupComboBox
+      Left = 446
+      Top = 48
+      Width = 282
+      Height = 24
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      KeyField = 'CLIENTE'
+      ListField = 'NOMBRE_CLIENTE'
+      ListSource = DtsClientes
+      ParentFont = False
+      TabOrder = 6
+    end
+    object DateTimePicker1: TDateTimePicker
+      Left = 311
+      Top = 48
+      Width = 121
+      Height = 24
+      Date = 44958.852892858800000000
+      Time = 44958.852892858800000000
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+    end
+    object Edit2: TEdit
+      Left = 742
+      Top = 48
+      Width = 142
+      Height = 24
+      CharCase = ecUpperCase
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 8
+    end
   end
   object GroupBox3: TGroupBox
     Left = 0
@@ -961,6 +988,7 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       Top = 16
       Width = 905
       Height = 281
+      DataSource = DtsCabezaFacturaCreados
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
       ReadOnly = True
       TabOrder = 0
@@ -969,25 +997,116 @@ object FrmCrudCabezaFactura: TFrmCrudCabezaFactura
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      OnDblClick = DBGrid1DblClick
       Columns = <
         item
+          Alignment = taLeftJustify
           Expanded = False
-          FieldName = 'PRODUCTO'
-          Width = 290
+          FieldName = 'NUMERO'
+          Width = 210
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'NOMBRE_PRODUCTO'
-          Width = 290
+          FieldName = 'FECHA'
+          Width = 210
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'VALOR'
-          Width = 290
+          FieldName = 'CLIENTE'
+          Width = 210
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'TOTAL'
+          Width = 210
           Visible = True
         end>
+    end
+  end
+  object QryCabezaFacturaCreados: TADOQuery
+    Connection = DataModule1.ConexionLocal
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT A.NUMERO, A.FECHA, A.CLIENTE, '
+      
+        'ISNULL((SELECT SUM(B.VALOR*B.CANTIDAD) AS TOTAL FROM DETALLE_FAC' +
+        'TURA B WHERE B.NUMERO=A.NUMERO),0) AS TOTAL'
+      ' FROM CABEZA_FACTURA A')
+    Left = 168
+    Top = 352
+    object QryCabezaFacturaCreadosNUMERO: TIntegerField
+      FieldName = 'NUMERO'
+    end
+    object QryCabezaFacturaCreadosFECHA: TDateTimeField
+      FieldName = 'FECHA'
+    end
+    object QryCabezaFacturaCreadosCLIENTE: TIntegerField
+      FieldName = 'CLIENTE'
+    end
+    object QryCabezaFacturaCreadosTOTAL: TFloatField
+      FieldName = 'TOTAL'
+      ReadOnly = True
+    end
+  end
+  object DtsCabezaFacturaCreados: TDataSource
+    DataSet = QryCabezaFacturaCreados
+    Left = 224
+    Top = 352
+  end
+  object QryCrudCabezaFactura: TADOQuery
+    Connection = DataModule1.ConexionLocal
+    Parameters = <>
+    SQL.Strings = (
+      'select * from CABEZA_FACTURA')
+    Left = 168
+    Top = 384
+    object QryCrudCabezaFacturaNUMERO: TIntegerField
+      FieldName = 'NUMERO'
+    end
+    object QryCrudCabezaFacturaFECHA: TDateTimeField
+      FieldName = 'FECHA'
+    end
+    object QryCrudCabezaFacturaCLIENTE: TIntegerField
+      FieldName = 'CLIENTE'
+    end
+    object QryCrudCabezaFacturaTOTAL: TFloatField
+      FieldName = 'TOTAL'
+    end
+  end
+  object QryClientes: TADOQuery
+    Connection = DataModule1.ConexionLocal
+    Parameters = <>
+    SQL.Strings = (
+      'select CLIENTE,NOMBRE_CLIENTE from CLIENTES')
+    Left = 600
+    Top = 72
+    object QryClientesCLIENTE: TIntegerField
+      FieldName = 'CLIENTE'
+    end
+    object QryClientesNOMBRE_CLIENTE: TStringField
+      FieldName = 'NOMBRE_CLIENTE'
+      Size = 50
+    end
+  end
+  object DtsClientes: TDataSource
+    DataSet = QryClientes
+    Left = 640
+    Top = 80
+  end
+  object QrySaldo: TADOQuery
+    Connection = DataModule1.ConexionLocal
+    Parameters = <>
+    SQL.Strings = (
+      'select VALOR*CANTIDAD as total from  DETALLE_FACTURA a ')
+    Left = 776
+    Top = 143
+    object QrySaldototal: TFloatField
+      FieldName = 'total'
+      ReadOnly = True
     end
   end
 end
